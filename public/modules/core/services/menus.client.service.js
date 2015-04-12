@@ -159,7 +159,10 @@ angular.module('core').service('Menus', [
 			// Return the menu object
 			return this.menus[menuId];
 		};
-
+        this.addMenu('top-user', {
+            isPublic: true,
+            roles: ['user']
+        });
 		//Adding the topbar menu
 		this.addMenu('topbar');
 	}
