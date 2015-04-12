@@ -1,0 +1,3 @@
+The stock Yeoman generated node_modules are required. 
+Install grunt into the local directory. 
+Then use bower install - -allow-root to complete setup.
