@@ -21,7 +21,10 @@ module.exports = {
 				'public/lib/angular-resource/angular-resource.js', 
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-ui-utils/ui-utils.js',
-				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js'
+				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
+				'//maps.googleapis.com/maps/api/js?sensor=false',
+            	'public/lib/ngmap/build/scripts/ng-map.js',
+            	'public/lib/lodash/lodash.js'
 			]
 		},
 		css: [
