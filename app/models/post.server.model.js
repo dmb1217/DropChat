@@ -23,7 +23,21 @@ var PostSchema = new Schema({
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'
-	}
+	},
+	lat:{
+        type: Number,
+        default: 0,
+        trim: true
+    },
+    lon:{
+        type: Number,
+        default: 0,
+        trim: true
+    },
+    message:{
+    	type: String,
+    	default: ''
+    }
 });
 
 mongoose.model('Post', PostSchema);

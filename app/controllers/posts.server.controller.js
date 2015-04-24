@@ -83,7 +83,32 @@ exports.list = function(req, res) {
 		}
 	});
 };
-
+exports.postLocations = function(req, res){
+	var location = new Post();
+	console.log(req.body.message);
+    console.log(req.body.latitude);
+    console.log(req.body.longitude);
+ 
+    location.latitude = req.body.latitude;
+    location.longitude = req.body.longitude;
+    location.message = req.body.message;
+ 
+    //passport will automatically set the user in req.user
+    location.userId = req.user._id;
+ 
+    // Save the location and check for errors
+    location.save(function(err) {
+        if (err){
+            res.send(err);
+            return;
+        }
+ 
+        res.json({
+            success: 'Location added successfully',
+            data: location
+        });
+    });
+};
 /**
  * Post middleware
  */
@@ -96,6 +121,7 @@ exports.postByID = function(req, res, next, id) {
 	});
 };
 
+
 /**
  * Post authorization middleware
  */
@@ -105,3 +131,4 @@ exports.hasAuthorization = function(req, res, next) {
 	}
 	next();
 };
+

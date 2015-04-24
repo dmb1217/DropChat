@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('about').run(['Menus',
     function(Menus) {
         // Set top bar menu items

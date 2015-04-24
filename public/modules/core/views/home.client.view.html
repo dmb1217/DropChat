@@ -8,13 +8,29 @@
 		<div class="row">
 			<div class="col-md-12">
 				<img alt="DropChat" class="img-responsive" src="modules/core/img/brand/brandLarge.png" style="margin:0 auto; height:125px;"/>
+				<div ng-app="ngMap">
+			<map center="current-location" zoom="14" tilt="45" heading="90"
+						street-view-control="false">
+        		<info-window position="current-location" ng-if="!authentication.user">
+        			<div style="text-align:center;">Sign up for an account and drop a message wherever you'd like!<br />
+        				<b>CURRENTLY UNDER CONSTRUCTION</b>
+        			</div>
+        			
+        		</info-window>
+        		<info-window position="current-location" ng-if="authentication.user">
+        			<div style="text-align:center;">
+        				Welcome, <span style="font-weight: bold" ng-bind="authentication.user.displayName"></span>!<br />
+        				Pick a spot anywhere on the map and begin dropping messages for other people to see!
+        			</div>
+        			
+        		</info-window>
+     		</map>
+		</div>
 			</div>
 		</div>
 		<br>
     </div>
-	<div class="well">
-		<div ng-app="ngMap">
-			<map center="-34.397, 150.644" zoom="8"></map>
-		</div>
-	</div>
+	<!--<div class="well">
+		
+	</div>-->
 </section>

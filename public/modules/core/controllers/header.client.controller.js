@@ -16,3 +16,7 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
 		});
 	}
 ]);
+
+
+
+
