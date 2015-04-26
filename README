@@ -16,7 +16,7 @@ Gmaps already only allows 25 markers to be displayed on the map at a time, so
 zooming into an area will natively begin to draw the markers for us
 depending on the region shown with the zoom level.
 
-<b>What's not implemented?</b>
+What's not implemented?
 A lot :(
 I wanted the users to be able to click on a name in a map's
 infowindow to link them to that user's profile, but I ran
