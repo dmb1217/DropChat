@@ -1,6 +1,7 @@
 The stock Yeoman generated node_modules are required. 
 Install grunt into the local directory. 
 Then use bower install --allow-root to complete setup.
+After that, run bower install ngmap --save to install the ng-map directive.
 
 4/26/2015
 ----------------
