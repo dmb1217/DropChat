@@ -25,11 +25,11 @@ is already installed into public/lib) with something, but
 I'm not really sure what I should use it for yet. Any ideas
 for something simple but useful would be appreciated. 
 
-Currently, if a user drops and submits a message, nothing happens.
-The user must manually refresh the page in order for the message
-to appear for them. I plan on implementing a map redraw on submit,
-which should do the trick, but I could never get it to work. I was
-using google.maps.event.trigger(map, 'resize'); 
+Currently, if a user drops and submits a message, they have
+to go through a full page postback, which resets their location
+back to geolocation. I plan on implementing a map redraw on submit,
+which should prevent the roundtrip, but I could never get it to work. I was
+using google.maps.event.trigger(map, 'resize') in my create() function. 
 
 Also couldn't get the page to redirect to /#!/ with 
 $location so i'm just using jscript location.refresh().
