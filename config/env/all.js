@@ -17,12 +17,13 @@ module.exports = {
 				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
 			],
 			js: [
+				'//code.jquery.com/jquery-1.11.2.js',
 				'public/lib/angular/angular.js',
 				'public/lib/angular-resource/angular-resource.js', 
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-ui-utils/ui-utils.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
-				'//maps.googleapis.com/maps/api/js?sensor=false',
+				'//maps.googleapis.com/maps/api/js?libraries=places&sensor=false',
             	'public/lib/ngmap/build/scripts/ng-map.js',
             	'public/lib/lodash/lodash.js'
 			]

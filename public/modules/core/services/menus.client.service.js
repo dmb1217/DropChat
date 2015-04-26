@@ -164,6 +164,6 @@ angular.module('core').service('Menus', [
             roles: ['user']
         });
 		//Adding the topbar menu
-		this.addMenu('topbar');
+		this.addMenu('topbar', true);
 	}
 ]);

@@ -1,34 +1,37 @@
 <section data-ng-controller="HomeController">
+<script src="https://code.jquery.com/jquery-1.11.2.js"></script>
 	<div class="jumbotron text-center">
 		<div class="row">
-			<div class="col-md-12">
-				<img alt="DropChat logo" class="img-responsive" src="modules/core/img/brand/logo.png" style="margin:0 auto;"/>
+<!--
+			<div class="col-md-7">
+				<img alt="DropChat" class="img-responsive" src="modules/core/img/brand/brandLarge.png" style="height:90px; float:right;"/>
 			</div>
+			<div class="col-md-5">
+				<img alt="DropChat logo" class="img-responsive" src="modules/core/img/brand/logo.png" style="height:90px; margin-top:-15px;"/>
+			</div>
+			-->
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<img alt="DropChat" class="img-responsive" src="modules/core/img/brand/brandLarge.png" style="margin:0 auto; height:125px;"/>
-				<div ng-app="ngMap">
-			<map center="current-location" zoom="14" tilt="45" heading="90"
-						street-view-control="false">
-        		<info-window position="current-location" ng-if="!authentication.user">
-        			<div style="text-align:center;">Sign up for an account and drop a message wherever you'd like!<br />
-        				<b>CURRENTLY UNDER CONSTRUCTION</b>
-        			</div>
-        			
-        		</info-window>
-        		<info-window position="current-location" ng-if="authentication.user">
-        			<div style="text-align:center;">
-        				Welcome, <span style="font-weight: bold" ng-bind="authentication.user.displayName"></span>!<br />
-        				Pick a spot anywhere on the map and begin dropping messages for other people to see!
-        			</div>
-        			
-        		</info-window>
-     		</map>
-		</div>
+				<div ng-app="ngMap" class="ng-scope" ng-controller="EventArgumentsCtrl" style="border:1px solid #0198CD; border-radius:4px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);">
+					<map center="current-location" zoom="14" tilt="45" heading="90"
+								street-view-control="false" ng-if="!authentication.user" style="border-radius:10px;">
+		        		<info-window position="current-location">
+		        			<div style="text-align:center;">Sign up for an account and drop a message wherever you'd like!<br />
+		        				<b>CURRENTLY UNDER CONSTRUCTION</b>
+		        			</div>
+		        			
+		        		</info-window>
+		     		</map>
+		     		<map center="current-location" zoom="14" tilt="45" heading="90"
+								street-view-control="false" ng-if="authentication.user" style="border-radius:10px;" 
+								on-click="placeMarker()" zoom-control="true" zoom-control-options="{style:'LARGE', position:'LEFT_CENTER'}" scale-control="true">
+
+					</map>
+				</div>
 			</div>
 		</div>
-		<br>
+		<input id="pac-input" class="controls" type="text" placeholder="Map Search"/>
     </div>
 	<!--<div class="well">
 		

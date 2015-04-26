@@ -4,7 +4,7 @@
 angular.module('posts').controller('PostsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Posts',
 	function($scope, $stateParams, $location, Authentication, Posts) {
 		$scope.authentication = Authentication;
-
+		
 		// Create new Post
 		$scope.create = function() {
 			// Create new Post object

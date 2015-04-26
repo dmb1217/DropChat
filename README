@@ -1,5 +1,35 @@
 The stock Yeoman generated node_modules are required. 
 Install grunt into the local directory. 
-Then use bower install - -allow-root to complete setup.
+Then use bower install --allow-root to complete setup.
 
-So far i'm having serious trouble getting ng-maps to work... spent the last two days straight working on this and haven't gotten anywhere.
+4/26/2015
+----------------
+I spent so much time getting the map functionality started that 
+I didn't have time to set up socket.io with anything. 
+
+Currently, a user can create, edit, and view a custom profile page.
+Once logged in, the user can 'drop' messages on the map which
+any other user can see anywhere in the world. They can currently 
+edit or delete their posts using the menu service, which will remove them from the map. 
+
+Gmaps already only allows 25 markers to be displayed on the map at a time, so
+zooming into an area will natively begin to draw the markers for us
+depending on the region shown with the zoom level.
+
+<b>What's not implemented?</b>
+A lot :(
+I wanted the users to be able to click on a name in a map's
+infowindow to link them to that user's profile, but I ran
+out of time to do that. I also need to set up socket.io (which
+is already installed into public/lib) with something, but
+I'm not really sure what I should use it for yet. Any ideas
+for something simple but useful would be appreciated. 
+
+Currently, if a user drops and submits a message, nothing happens.
+The user must manually refresh the page in order for the message
+to appear for them. I plan on implementing a map redraw on submit,
+which should do the trick, but I could never get it to work. I was
+using google.maps.event.trigger(map, 'resize'); 
+
+Also couldn't get the page to redirect to /#!/ with 
+$location so i'm just using jscript location.refresh().

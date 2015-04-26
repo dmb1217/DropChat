@@ -1,0 +1,25 @@
+<section class="row" data-ng-controller="SettingsController">
+	 <div class="page-header">
+        <h1><span ng-bind="user.username"></span>'s Profile</h1>
+    </div>
+    <div class="row">
+    	<div class="column-md-12">
+    		<p class="bg-danger">Currently you can only view your own profile. Viewing other user profiles is an intended future feature.</p>
+    	</div>
+    </div>
+    <div class="row">
+	    <span class="glyphicons glyphicons-user"></span>
+	    <div class="jumbotron">
+	    	<div class="column-md-5">
+	    		<label>Name:</label> {{user.firstName}} {{user.lastName}}<br/>
+	    		<label>Email:</label> {{user.email}}<br/>
+	    		<label>Username:</label> {{user.username}}<br/>
+	    		<label>Gender:</label> {{user.gender}}<br />
+	    		<label>Bio:</label><br />
+	    		<div class="well">
+	    			{{user.bio}}
+	    		</div>
+	    	</div>
+	    </div>
+    </div>
+</section>
