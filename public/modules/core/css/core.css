@@ -1,3 +1,12 @@
+.jumbotron{
+
+}
+
+map{
+	height:550px !important;
+	position:relative;
+	z-index: 1;
+}
 .content {
 	margin-top: 50px;
 }
@@ -52,4 +61,20 @@
 	font-family: Roboto;
 	font-size: 13px;
 	font-weight: 300;
+}
+
+#toast{
+	font-family: Roboto;
+	padding:15px;
+	background-color: #D1E3FF;
+	border-radius:10px;
+	display: none;
+	margin-left:5%;
+	width: 90%;
+}
+
+#toast_wrapper{
+	margin: 0 auto;
+	width: 90%;
+	height:45px;
 }

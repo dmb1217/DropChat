@@ -34,6 +34,14 @@ var PostSchema = new Schema({
         default: 0,
         trim: true
     },
+    city:{
+    	type: String,
+    	default: ''
+    },
+    state:{
+    	type: String,
+    	default: ''
+    },
     message:{
     	type: String,
     	default: ''

@@ -1,10 +1,9 @@
 'use strict';
 
 // Posts controller
-angular.module('posts').controller('PostsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Posts',
-	function($scope, $stateParams, $location, Authentication, Posts) {
+angular.module('posts').controller('PostsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Posts', 'Socket',
+	function($scope, $stateParams, $location, Authentication, Posts, Socket) {
 		$scope.authentication = Authentication;
-		
 		// Create new Post
 		$scope.create = function() {
 			// Create new Post object

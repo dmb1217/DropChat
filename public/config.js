@@ -4,7 +4,7 @@
 var ApplicationConfiguration = (function() {
 	// Init module configuration options
 	var applicationModuleName = 'dropchat';
-	var applicationModuleVendorDependencies = ['ngResource', 'ui.router', 'ui.bootstrap', 'ui.utils', 'ngMap'];
+	var applicationModuleVendorDependencies = ['ngResource', 'ui.router', 'ui.bootstrap', 'ui.utils', 'ngMap', 'btford.socket-io'];
 	// Add a new vertical module
 	var registerModule = function(moduleName, dependencies) {
 		// Create angular module

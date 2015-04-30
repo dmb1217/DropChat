@@ -12,9 +12,13 @@
 			-->
 		</div>
 		<div class="row">
+			<div id="toast_wrapper">
+				<div id="toast"></div>
+			</div>
 			<div class="col-md-12">
-				<div ng-app="ngMap" class="ng-scope" ng-controller="EventArgumentsCtrl" style="border:1px solid #0198CD; border-radius:4px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);">
-					<map center="current-location" zoom="14" tilt="45" heading="90"
+
+				<div ng-app="ngMap" class="ng-scope" ng-controller="EventArgumentsCtrl" style="border:5px solid #0198CD; border-radius:4px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);">
+					<map center="current-location" zoom="14" tilt="45" heading="90" on-click="placeMarker()"
 								street-view-control="false" ng-if="!authentication.user" style="border-radius:10px;">
 		        		<info-window position="current-location">
 		        			<div style="text-align:center;">Sign up for an account and drop a message wherever you'd like!<br />

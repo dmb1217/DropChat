@@ -14,7 +14,7 @@ module.exports = {
 		lib: {
 			css: [
 				'public/lib/bootstrap/dist/css/bootstrap.css',
-				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
+				'public/lib/bootstrap/dist/css/bootstrap-theme.css'
 			],
 			js: [
 				'//code.jquery.com/jquery-1.11.2.js',
@@ -25,7 +25,9 @@ module.exports = {
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
 				'//maps.googleapis.com/maps/api/js?libraries=places&sensor=false',
             	'public/lib/ngmap/build/scripts/ng-map.js',
-            	'public/lib/lodash/lodash.js'
+            	'public/lib/lodash/lodash.js',
+            	'public/lib/angular-socket-io/socket.js',
+            	'//cdn.socket.io/socket.io-1.3.5.js'
 			]
 		},
 		css: [

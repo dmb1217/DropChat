@@ -4,23 +4,62 @@ var welcomewindow,
 	infowindow,
 	currentPos,
 	map,
-	hasPosted;
+	hasPosted,
+	geocoder,
+	state,
+	city,
+	count;
 
-angular.module('core').controller('HomeController', ['$scope', 'Authentication', '$stateParams', 'Posts', '$location',
-	function($scope, Authentication, stateParams, Posts, $location) {
+angular.module('core').controller('HomeController', ['$scope', 'Authentication', '$stateParams', 'Posts', '$location', 'Socket',
+	function($scope, Authentication, stateParams, Posts, $location, Socket) {
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
+		
+		if($scope.authentication.user){
 
+			Socket.on('post.created', function(post) {
+				if(typeof post != "undefined"){
+			       
+			        $("#toast").html(post.name +" just posted a message!");
+				    $("#toast").fadeIn('slow');
+	     			$("#toast").delay('5000');
+	     			$("#toast").fadeOut('slow');
+				}
+			    
+			});
+		}
 		$scope.create = function(){
+			/*geocoder = new google.maps.Geocoder();
+			var latlng = new google.maps.LatLng(currentPos.lat(), currentPos.lng());
+			//alert("Else loop" + latlng);
+			geocoder.geocode({'latLng': latlng}, function(results, status)
+			{
+			//alert("Else loop1");
+				if (status == google.maps.GeocoderStatus.OK)
+				{
+					if (results[0]){
+						var add=results[0].formatted_address ;
+						var value=add.split(",");
+						count=value.length;
+						state=value[count-2];
+						city=value[count-3];
+					}
+					else{
+						alert("address not found");
+					}
+				}
+			});*/
 			var post = new Posts({
 				name: Authentication.user.username,
 				message: $scope.message,
 				lat: currentPos.lat(),
 				lon: currentPos.lng()
 			});
+
 			post.$save(function(response) {
 				// Clear form fields
-				location.reload();
+				//location.reload();
+     		    
 				$scope.message = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
@@ -119,24 +158,34 @@ angular.module('core').controller('EventArgumentsCtrl', function($scope, $compil
 	  		}
 	  	});
      	$scope.placeMarker = function(e) {
-        	var marker = new google.maps.Marker({
-        		position: e.latLng,
-        		map: map,
-        		animation: google.maps.Animation.DROP,
-        		icon: "http://www.crete.tournet.gr/components/com_articlecoords/map/marker_blue.png"
-        	});
-        	infowindow.open(map, marker);
-        	google.maps.event.addListener(infowindow, 'closeclick', function(){
-        		marker.setMap(null);
-        	});
-        	google.maps.event.addListener(map, 'click', function(){
-        		marker.setMap(null);
-        	});
-        	welcomewindow.close();
-        	messagewindow.close();
-        	currentPos=marker.position;
-        	//map.panTo(e.latLng);
+     		if($scope.authentication.user){
+	        	var marker = new google.maps.Marker({
+	        		position: e.latLng,
+	        		map: map,
+	        		animation: google.maps.Animation.DROP,
+	        		icon: "http://www.crete.tournet.gr/components/com_articlecoords/map/marker_blue.png"
+	        	});
+	        	infowindow.open(map, marker);
+	        	google.maps.event.addListener(infowindow, 'closeclick', function(){
+	        		marker.setMap(null);
+	        	});
+	        	google.maps.event.addListener(map, 'click', function(){
+	        		marker.setMap(null);
+	        	});
+	        	welcomewindow.close();
+	        	messagewindow.close();
+	        	currentPos=marker.position;
+	        	//map.panTo(e.latLng);
+        	} else {
+        		$("#toast").html("You must <a href=http://localhost:3000/#!/signup>register</a> before dropping messages!");
+        		$("#toast").fadeIn('slow');
+     			$("#toast").delay('5000');
+     			$("#toast").fadeOut('slow');
+        	}
+
       	};
+
+
     });
 	function handleNoGeolocation(errorFlag) {
 		var options = {
