@@ -46,10 +46,15 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 
 		        	previouswindow.close();
 			        //$("#toast").html(post.name +" just posted a message!");
-			        $("#toast").html(post.message);
+			        var html = '<b>'+post.name+'</b> just dropped a message <span id="MarkerLoc">here</span>.';
+			        $("#toast").html(html);
 				    $("#toast").fadeIn('slow');
 	     			$("#toast").delay('5000');
 	     			$("#toast").fadeOut('slow');
+	     			$("#MarkerLoc").click(function(){
+	     				map.panTo(pos);
+	     				previouswindow.open(map, JustDroppedMarker);
+	     			});
 				}
 			    
 			});
