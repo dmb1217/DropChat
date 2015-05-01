@@ -49,7 +49,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 			        var html = '<b>'+post.name+'</b> just dropped a message <span id="MarkerLoc">here</span>.';
 			        $("#toast").html(html);
 				    $("#toast").fadeIn('slow');
-	     			$("#toast").delay('5000');
+	     			$("#toast").delay('10000');
 	     			$("#toast").fadeOut('slow');
 	     			$("#MarkerLoc").click(function(){
 	     				map.panTo(pos);

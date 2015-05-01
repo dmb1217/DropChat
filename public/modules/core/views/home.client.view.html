@@ -19,15 +19,17 @@
 
 				<div ng-app="ngMap" class="ng-scope" ng-controller="EventArgumentsCtrl" style="border:5px solid #0198CD; border-radius:4px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);">
 					<map center="current-location" zoom="14" tilt="45" heading="90" on-click="placeMarker()"
-								street-view-control="false" ng-if="!authentication.user" style="border-radius:10px;">
+								street-view-control="false" ng-if="!authentication.user" style="border-radius:10px;" map-type-id="SATELLITE">
 		        		<info-window position="current-location">
-		        			<div style="text-align:center;">Sign up for an account and drop a message wherever you'd like!<br />
-		        				<b>CURRENTLY UNDER CONSTRUCTION</b>
+		        			<div style="text-align:center;">
+		        				Welcome to<br />
+		        				<img src="modules/core/img/brand/brandLarge.png" height="125"/><br/>
+		        				Sign up for an account and drop a message wherever you'd like!<br />
 		        			</div>
 		        			
 		        		</info-window>
 		     		</map>
-		     		<map center="current-location" zoom="14" tilt="45" heading="90"
+		     		<map center="current-location" zoom="14" tilt="45" heading="90" map-type-id="SATELLITE"
 								street-view-control="false" ng-if="authentication.user" style="border-radius:10px;" 
 								on-click="placeMarker()" zoom-control="true" zoom-control-options="{style:'LARGE', position:'LEFT_CENTER'}" scale-control="true">
 
