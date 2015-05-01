@@ -1,4 +1,4 @@
-#Installation
+Installation
 The stock Yeoman generated node_modules are required. 
 Install grunt into the local directory. 
 bower install --allow-root
@@ -6,10 +6,11 @@ bower install angular-socket-io --save
 bower install ng-map --save
 bower install angular-google-maps --save
 bower install socket.io --save
-#What is this?
+
+What is this?
 DropChat is an app made with angularjs that allows users to drop messages on a map for others to read. Messages are asynchronously added to the map when someone makes a post, so all messages are visible immediately. Socket.io is being made use of to link a user to the most recently dropped message, but currently only one message is shown at a time. This is a very basic, but functional, version of something that could potentially become much larger.
 
-#The Future
+The Future
 1. Public user profiles
 2. Custom marker icons (food, music, bars, coffee, etc.)
 3. Upvote/downvote with specific downvote threshold resulting in deletion
