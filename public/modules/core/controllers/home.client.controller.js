@@ -1,7 +1,9 @@
 'use strict';
 
 var welcomewindow,
+	previouswindow,
 	infowindow,
+	messagewindow,
 	currentPos,
 	map,
 	hasPosted,
@@ -12,15 +14,39 @@ var welcomewindow,
 
 angular.module('core').controller('HomeController', ['$scope', 'Authentication', '$stateParams', 'Posts', '$location', 'Socket',
 	function($scope, Authentication, stateParams, Posts, $location, Socket) {
-		// This provides Authentication context.
 		$scope.authentication = Authentication;
-		
 		if($scope.authentication.user){
-
 			Socket.on('post.created', function(post) {
 				if(typeof post != "undefined"){
-			       
-			        $("#toast").html(post.name +" just posted a message!");
+			        var pos = new google.maps.LatLng(post.lat, post.lon);
+			        var message = 
+		  					'<b>'+post.name + '</b> says:'+
+		  					'<br /><span style="font-size:11">'+post.message+'</span>';
+		  			var previouswindow = new google.maps.InfoWindow();
+		  			previouswindow.setContent(message);
+		  			if(post.name != $scope.authentication.user.username){
+				        var JustDroppedMarker = new google.maps.Marker({
+			        		position: pos,
+			        		map: map,
+			        		animation: google.maps.Animation.DROP,
+			        		icon: "http://www.crete.tournet.gr/components/com_articlecoords/map/marker_blue.png"
+			        	});
+			    	} else {
+			    		 var JustDroppedMarker = new google.maps.Marker({
+			        		position: pos,
+			        		map: map,
+			        		icon: "http://www.crete.tournet.gr/components/com_articlecoords/map/marker_blue.png"
+			        	});
+			    	}
+		        	google.maps.event.addListener(JustDroppedMarker, 'click', function(){
+		        		previouswindow.open(map, JustDroppedMarker);
+		        		messagewindow.close();
+		        		welcomewindow.close();
+		        	});
+
+		        	previouswindow.close();
+			        //$("#toast").html(post.name +" just posted a message!");
+			        $("#toast").html(post.message);
 				    $("#toast").fadeIn('slow');
 	     			$("#toast").delay('5000');
 	     			$("#toast").fadeOut('slow');
@@ -29,37 +55,15 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 			});
 		}
 		$scope.create = function(){
-			/*geocoder = new google.maps.Geocoder();
-			var latlng = new google.maps.LatLng(currentPos.lat(), currentPos.lng());
-			//alert("Else loop" + latlng);
-			geocoder.geocode({'latLng': latlng}, function(results, status)
-			{
-			//alert("Else loop1");
-				if (status == google.maps.GeocoderStatus.OK)
-				{
-					if (results[0]){
-						var add=results[0].formatted_address ;
-						var value=add.split(",");
-						count=value.length;
-						state=value[count-2];
-						city=value[count-3];
-					}
-					else{
-						alert("address not found");
-					}
-				}
-			});*/
 			var post = new Posts({
 				name: Authentication.user.username,
 				message: $scope.message,
 				lat: currentPos.lat(),
 				lon: currentPos.lng()
 			});
-
+			messagewindow.close();
+			messagewindow.setContent($scope.message);
 			post.$save(function(response) {
-				// Clear form fields
-				//location.reload();
-     		    
 				$scope.message = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
@@ -131,8 +135,8 @@ angular.module('core').controller('EventArgumentsCtrl', function($scope, $compil
 	  		}
 	  		map.fitBounds(bounds);
 		});
-	  	var i,
-	  		messagewindow = new google.maps.InfoWindow;
+	  	var i;
+	  	messagewindow = new google.maps.InfoWindow;
 	  	var posts = Posts.query(function(){
 	  		//console.log(posts[0]['message']);
 	  		//get all of the messages dropped by all users:
