@@ -3,7 +3,7 @@ The stock Yeoman generated node_modules are required.
 Install grunt into the local directory. 
 bower install --allow-root
 bower install angular-socket-io --save
-bower install ng-map --save
+bower install ngmap --save
 bower install angular-google-maps --save
 bower install socket.io --save
 
