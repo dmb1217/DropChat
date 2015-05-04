@@ -6,6 +6,7 @@ bower install angular-socket-io --save
 bower install ngmap --save
 bower install angular-google-maps --save
 bower install socket.io --save
+npm install -g socket.io
 
 What is this?
 DropChat is an app made with angularjs that allows users to drop messages on a map for others to read. Messages are asynchronously added to the map when someone makes a post, so all messages are visible immediately. Socket.io is being made use of to link a user to the most recently dropped message, but currently only one message is shown at a time. This is a very basic, but functional, version of something that could potentially become much larger.
