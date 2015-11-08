@@ -1,6 +1,7 @@
 Installation
 The stock Yeoman generated node_modules are required. 
 Install grunt into the local directory. 
+Testing merge
 
 bower install --allow-root
 bower install angular-socket-io --save
